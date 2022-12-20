@@ -10,7 +10,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://bc.game/game/crash/*"],
+            "matches": ["https://www.ethercrash.io/play/*"],
             "js": ["document_end.js"],
             "run_at": "document_end"
         }
