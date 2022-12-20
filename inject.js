@@ -13,7 +13,7 @@ async function openWindow() {
 
 	btnHistory.click();
 
-	var newWindow = window.open('https://bcgraph.netlify.app', '', 'fullscreen=yes');
+	var newWindow = window.open('https://bcgraph.netlify.app?game=ethercrash', '', 'fullscreen=yes');
 	if (!newWindow) {
 		window.location.reload();
 	} else {
