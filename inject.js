@@ -56,7 +56,7 @@ async function openWindow() {
 
 	var bcgraphURL = 'https://bcgraph.netlify.app?game=ethercrash';
 	if (userId) {
-		bcgraphURL += `?userid=${userId}`;
+		bcgraphURL += `&userid=${userId}`;
 	}
 
 	var newWindow = window.open(bcgraphURL, '', 'fullscreen=yes');
