@@ -71,7 +71,10 @@ async function openWindow() {
 			if (latestHash != prevHash) {
 				prevHash = latestHash;
 				bcgraphTab.postMessage({ hash: latestHash }, '*');
-				userRoundsTab?.location?.reload();
+
+				if (userRoundsTab.location.reload) {
+					userRoundsTab.location.reload();
+				}
 			}
 		}, 2000);
 	}
