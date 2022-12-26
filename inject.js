@@ -4,6 +4,7 @@ function delay(ms) {
 
 async function openWindow() {
 	var btnHistory = null;
+	var userId = '';
 
 	do {
 		await delay(2000);
@@ -48,9 +49,17 @@ async function openWindow() {
 		});
 
 		document.querySelector('#top-bar').appendChild(toggleButton);
+
+		// Get user id if logged in
+		userId = userField.querySelector('.username > a').innerHTML;
 	}
 
-	var newWindow = window.open('https://bcgraph.netlify.app?game=ethercrash', '', 'fullscreen=yes');
+	var bcgraphURL = 'https://bcgraph.netlify.app?game=ethercrash';
+	if (userId) {
+		bcgraphURL += `?userid=${userId}`;
+	}
+
+	var newWindow = window.open(bcgraphURL, '', 'fullscreen=yes');
 	if (!newWindow) {
 		window.location.reload();
 	} else {
