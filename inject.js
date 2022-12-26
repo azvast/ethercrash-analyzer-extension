@@ -5,6 +5,7 @@ function delay(ms) {
 async function openWindow() {
 	var btnHistory = null;
 	var userId = '';
+	var userRoundsTab = null;
 
 	do {
 		await delay(2000);
@@ -54,13 +55,13 @@ async function openWindow() {
 		userId = userField.querySelector('.username > a').innerHTML;
 	}
 
-	var bcgraphURL = 'https://bcgraph.netlify.app?game=ethercrash';
 	if (userId) {
-		bcgraphURL += `&userid=${userId}`;
+		userRoundsTab = window.open(`https://www.ethercrash.io/user/${userId}`, '_blank');
 	}
-
-	var newWindow = window.open(bcgraphURL, '', 'fullscreen=yes');
-	if (!newWindow) {
+	
+	var bcgraphURL = 'https://bcgraph.netlify.app?game=ethercrash';
+	var bcgraphTab = window.open(bcgraphURL, '_blank');
+	if (!bcgraphTab) {
 		window.location.reload();
 	} else {
 		var prevHash = '';
@@ -69,7 +70,8 @@ async function openWindow() {
 			var latestHash = document.querySelector('#games-log-container .games-log-hash').value;
 			if (latestHash != prevHash) {
 				prevHash = latestHash;
-				newWindow.postMessage({ hash: latestHash }, '*');
+				bcgraphTab.postMessage({ hash: latestHash }, '*');
+				userRoundsTab?.location?.reload();
 			}
 		}, 2000);
 	}

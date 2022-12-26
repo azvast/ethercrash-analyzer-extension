@@ -1,12 +1,12 @@
 {
-    "name": "BC.Game Analyzer",
+    "name": "Ethercrash Analyzer",
     "version": "1.0.0",
-    "description": "BC.Game Analyzer chrome extension",
+    "description": "Ethercrash Analyzer chrome extension",
     "manifest_version": 3,
     "author": "azvast",
     "action":{
         "default_popup": "index.html",
-        "default_title": "BC.Game Analyzer"
+        "default_title": "Ethercrash Analyzer"
     },
     "content_scripts": [
         {
@@ -15,9 +15,6 @@
             "run_at": "document_end"
         }
     ],
-    "background": {
-        "service_worker": "background.js"
-    },
     "web_accessible_resources": [
         {
             "resources": ["inject.js"],
@@ -25,8 +22,6 @@
         }
     ],
     "permissions": [
-        "activeTab",
-        "declarativeNetRequestWithHostAccess"
-    ],
-    "host_permissions": ["*://*/*"]
+        "activeTab"
+    ]
 }
