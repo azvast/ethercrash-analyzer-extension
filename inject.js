@@ -19,12 +19,12 @@ async function openWindow() {
 	var balanceSpan = document.querySelector("#top-bar > .user-login > .balance-bits > .balance");
 	if (balanceSpan) {
 		const ethSpan = document.createElement('span');
-		const ethBalance = balanceSpan.innerText.replace(',', '') / 1000000;
+		const ethBalance = balanceSpan.innerText.replaceAll(',', '') / 1000000;
 		ethSpan.innerText = '(' + ethBalance.toFixed(2) + ')';
 		balanceSpan.insertAdjacentElement('afterend', ethSpan);
 
 		balanceSpan.addEventListener('DOMSubtreeModified', () => {
-			const ethBalance = balanceSpan.innerText.replace(',', '') / 1000000;
+			const ethBalance = balanceSpan.innerText.replaceAll(',', '') / 1000000;
 			ethSpan.innerText = '(' + ethBalance.toFixed(2) + ')';
 		});
 	}
